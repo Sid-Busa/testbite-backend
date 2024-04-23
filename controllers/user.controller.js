@@ -43,9 +43,11 @@ module.exports = userController = {
           .digest("hex"),
       });
       if (!user) throw "User not found";
-      console.log(user);
+
       let sessionToken = await user.generateAuthToken({ email: user.email });
-      console.log(sessionToken);
+      user = user.toObject();
+      delete user.password;
+      console.log("user", user.password);
       return response.json({
         success: true,
         user,
