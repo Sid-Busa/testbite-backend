@@ -4,7 +4,7 @@ module.exports = foodItemsController = {
   getFoodItem: async (request, response) => {
     try {
       let foodItem = await FoodItems.find({
-        rating: request.body.rating,
+        type: request.body.type,
       });
       if (!foodItem)
         return response.json({ success: false, error: "Food Item Not Found" });
