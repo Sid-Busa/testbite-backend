@@ -17,7 +17,7 @@ module.exports = foodItemsController = {
     try {
       const requestBody = request.body;
       const foodItem = await FoodItems.findByIdAndUpdate(
-        request.params.foodItemId,
+        request.body.foodItemId,
         requestBody
       );
       if (!foodItem) throw "FoodItem Not Found";
